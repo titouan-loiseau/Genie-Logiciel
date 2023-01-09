@@ -1,0 +1,10 @@
+# JAVA
+Projet/bin
+*.class
+
+# LATEX
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
