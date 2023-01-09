@@ -8,9 +8,10 @@ public class CompteEpargne extends CompteBancaire {
     public CompteEpargne(double t)
     {
         taux = 1+t/100;
-    	m_solde=0;
+    	m_solde=0; // Solde à 0 au départ
     }
 
+    //Rémunerer
     public void remunerer(){m_solde = m_solde * taux;}
     
 }

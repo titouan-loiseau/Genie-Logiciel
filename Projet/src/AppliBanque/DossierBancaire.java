@@ -9,7 +9,7 @@ public class DossierBancaire {
     public DossierBancaire()
     {
     	m_compte_bancaire = new CompteBancaire();
-        m_compte_epargne = new CompteEpargne(3.2);
+        m_compte_epargne = new CompteEpargne(3.2); // On utilise un taux de 3.2%
     }
 
     public void deposer(double value) {
