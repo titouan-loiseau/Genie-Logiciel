@@ -1,16 +1,16 @@
 package AppliBanque;
 
 public class DossierBancaire {
-	
+
+    private CompteBancaire m_compte_bancaire;
 	//Constructeur
     public DossierBancaire()
     {
-    	m_solde=0;
+    	m_compte_bancaire = new CompteBancaire();
     }
 
-    public void deposer(double value) {m_solde+=value;}
-    public double get_solde() {return m_solde;}
+    public void deposer(double value) {m_compte_bancaire.deposer(value);}
+    public double get_solde() {return m_compte_bancaire.get_solde();}
     public void remunerer() {}
-	
-    private double m_solde;
+    
 }
