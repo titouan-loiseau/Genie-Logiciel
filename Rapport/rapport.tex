@@ -1,8 +1,6 @@
 \documentclass[12pt]{article}
 \usepackage{standalone}
-\usepackage{import}
 \usepackage{graphicx}
-\usepackage{tikz-uml}
 
 % Nom du sommaire
 \renewcommand*\contentsname{Sommaire}
@@ -40,8 +38,29 @@
 La figure~\ref{UC1} présente le premier diagramme de classes imaginé. 
 
 \begin{figure}[h]
-    \subimport{A/}{Diagrammes/UML_UC1}
-    \caption{'Diagramme de classes'\label{UC1}}
+    \centering
+    \includegraphics{Diagrammes/UML_UC1.pdf}
+    \caption{Diagramme de classes\label{UC1}}
 \end{figure}
 
+
+\subsection{Q2}
+
+La figure~\ref{US1} présente le premier diagramme de classes imaginé. 
+\begin{figure}[h]
+    \centering
+    \includegraphics{Diagrammes/UML_US1.pdf}
+    \caption{Diagramme de séquence\label{US1}}
+\end{figure}
+
+
+\subsection{Q3}
+
+En plus des diagrammes précédents, on peut faire un diragramme d'objets modélisant l'état du programme après l'instanciation de l'objet de la classe DossierBancaire.
+La figure~\ref{UO1} présente un tel diagramme. 
+\begin{figure}[h]
+    \centering
+    \includegraphics{Diagrammes/UML_UO1.pdf}
+    \caption{Diagramme d\textquotesingle objets\label{UO1}}
+\end{figure}
 \end{document}
