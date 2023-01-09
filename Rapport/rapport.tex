@@ -1,7 +1,17 @@
 \documentclass[12pt]{article}
 \usepackage{standalone}
+\usepackage{import}
+\usepackage{graphicx}
+\usepackage{tikz-uml}
 
 \begin{document}
 Hello World!
 Test LATEX
+
+La figure~\ref{UC1} présente le premier diagramme de classes imaginé. 
+    \begin{figure}[h]
+        \subimport{A/}{Diagrammes/UML_UC1}
+        \caption{'Diagramme de classes'\label{UC1}}
+    \end{figure}
+
 \end{document}
