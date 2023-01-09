@@ -1,4 +1,4 @@
-package myPackage;
+package AppliBanque;
 
 public class DossierBancaire {
 	

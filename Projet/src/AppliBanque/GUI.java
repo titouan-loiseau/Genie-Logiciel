@@ -1,4 +1,4 @@
-package myPackage;
+package AppliBanque;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
