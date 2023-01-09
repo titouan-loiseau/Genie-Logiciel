@@ -4,14 +4,44 @@
 \usepackage{graphicx}
 \usepackage{tikz-uml}
 
+% Nom du sommaire
+\renewcommand*\contentsname{Sommaire}
+
 \begin{document}
-Hello World!
-Test LATEX
+
+% Page de Titre
+\begin{titlepage}
+    \begin{center}
+        \textbf{Rapport de Génie Logiciel} \\
+        \vspace{0.5cm}
+        Titouan Loiseau et Baptiste Marchand \\
+        4A SAGI - TD2 \\
+        \vspace{5cm}
+
+        \includegraphics[height=3cm]{img/Polytech_Angers.png} \\
+        \includegraphics[height=2cm]{img/git.png}
+        \includegraphics[height=2cm]{img/junit.png}
+        \includegraphics[height=2cm]{img/uml.png}
+    \end{center}
+\end{titlepage}
+
+% Sommaire
+\tableofcontents
+\pagebreak
+
+% Introduction
+\addcontentsline{toc}{section}{Introduction}
+\section*{Introduction}
+
+% Exercice 1
+\section{Exercice 1}
+\subsection{Q1}
 
 La figure~\ref{UC1} présente le premier diagramme de classes imaginé. 
-    \begin{figure}[h]
-        \subimport{A/}{Diagrammes/UML_UC1}
-        \caption{'Diagramme de classes'\label{UC1}}
-    \end{figure}
+
+\begin{figure}[h]
+    \subimport{A/}{Diagrammes/UML_UC1}
+    \caption{'Diagramme de classes'\label{UC1}}
+\end{figure}
 
 \end{document}
