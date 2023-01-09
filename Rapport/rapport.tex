@@ -1,6 +1,29 @@
 \documentclass[12pt]{article}
 \usepackage{standalone}
 \usepackage{graphicx}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
 
 % Nom du sommaire
 \renewcommand*\contentsname{Sommaire}
@@ -70,14 +93,22 @@ La figure~\ref{UO1} présente un tel diagramme.
 \section{Exercice 2}
 
 Pour la compilation du projet simplement, les commandes trouvées 
-dans le README permettent de compiler le projet.
+dans le README permettent de compiler le projet, comme montré dans la figure \ref{ScreenE2Q31}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{img/Screenshots/E2_Q3_1.png}
+    \caption{Compilation du programme\label{ScreenE2Q31}}
+\end{figure}
 \\
 Pour la compilation des tests, il faut d'abord télécharger JUnit 4 et hamcrest-core et placer les fichiers .jar
 à un endroit connu (l'emplacement du projet par exemple). En utilisant les commandes du README en adaptant les 
 chemins en fonction de l'emplacement local, on peut compiler exécuter les tests.
 
+
 % Exercice 3
 \section{Exercice 3}
+
+\subsection{Q1-Q2}
 
 Pour travailler parallèlement sur le projet, nous avous utilisé le logiciel de versionning git couplé à un outil 
 de dépôt en ligne appelé GitHub. Les étapes effectuées pour initialiser le dépôt sont:
@@ -93,5 +124,96 @@ de dépôt en ligne appelé GitHub. Les étapes effectuées pour initialiser le 
 
 Par la suite, nous avons effectué les différents commits via la console en ajoutant des tags quand 
 nécéssaire avec la commande \textquotesingle git tag\textquotesingle .
+Pour ajouter les tags dans le dépôt distant, il faut exécuter la commande \textquotesingle git push origin --tags\textquotesingle
+
+\subsection{Q3}
+
+\begin{lstlisting}[language=Java]
+// TestDossierBancaire.java
+@Test
+public void test_constructeur() 
+{
+	DossierBancaire dossier=new DossierBancaire();
+	assertNotNull(dossier);
+}
+
+@Test  
+public void test_deposer() 
+{
+	DossierBancaire dossier=new DossierBancaire();
+	dossier.deposer(100);
+	assertEquals(100,dossier.get_solde(),0); 
+}
+
+@Test
+public void test_remunerer() 
+{
+	DossierBancaire dossier=new DossierBancaire();
+	dossier.deposer(100);
+	dossier.remunerer();
+	double apres_remuneration = 0.4 * 100 + 0.6 * 100 * 1.032;
+	assertEquals(apres_remuneration,dossier.get_solde(),0);
+}
+\end{lstlisting}
+
+L'éxecution de ces tests fonctionne sauf pour rémunérer qui n'a pas encore été implémentée, comme montré sur la figure \ref{ScreenE3Q31}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{img/Screenshots/E3_Q3_1.png}
+    \caption{Tests\label{ScreenE3Q31}}
+\end{figure}
+
+\subsection{Q5}
+
+\begin{lstlisting}
+// CompteBancaire.java
+package AppliBanque;
+
+public class CompteBancaire {
+
+    protected double m_solde;
+
+    public CompteBancaire()
+    {
+        m_solde=0;
+    }
+    public void deposer(double value) {m_solde+=value;}
+    public double get_solde() {return m_solde;}
+
+}
+\end{lstlisting}
+
+% Exercice 4
+\section{Exercice 4}
+\subsection{Q2}
+
+Le retour à une version précédente se fait via la commande
+\begin{lstlisting}[language=bash]
+git checkout V2.0
+\end{lstlisting}
+(pour retourner au commit avec le tag V2.0 par exemple)\\ \\
+La création de la nouvelle branche à partir de V2.0 se fait avec la commande
+\begin{lstlisting}[language=bash]
+git branch new_dev
+\end{lstlisting}
+Pour se rendre sur la branche (déplacer la HEAD sur la branche), il faut faire la commande
+\begin{lstlisting}[language=bash]
+git checkout new_dev
+\end{lstlisting}
+
+\subsection{Q3}
+
+Pour retourner sur la branche principale (déplacer la HEAD sur la branche), il faut faire la commande
+\begin{lstlisting}[language=bash]
+git checkout master
+\end{lstlisting}
+
+\subsection{Q4}
+
+L'intégration des modification apportees dans new\textunderscore dev sur la branche master se fait au moyen d'un merge.
+Se dernier s'effectue avec la commande:
+\begin{lstlisting}[language=bash]
+git merge new_dev master
+\end{lstlisting}
 
 \end{document}
