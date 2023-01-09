@@ -1,8 +1,10 @@
 package AppliBanque;
-import org.junit.*;
+
 public class CompteEpargne extends CompteBancaire {
 	
-    private double taux;
+    private double taux; // Taux stocké en pourcentage 1.032 par défaut
+
+    //Constructeur
     public CompteEpargne(double t)
     {
         taux = 1+t/100;
@@ -11,5 +13,4 @@ public class CompteEpargne extends CompteBancaire {
 
     public void remunerer(){m_solde = m_solde * taux;}
     
-	//sinj
 }
