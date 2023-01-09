@@ -7,5 +7,4 @@ public class Main {
         GUI g = new GUI(obj);
         //System.out.println("Solde: " + obj.get_solde());             
     }
-
 }
