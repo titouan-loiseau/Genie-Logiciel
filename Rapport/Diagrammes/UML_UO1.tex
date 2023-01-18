@@ -1,0 +1,14 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{tikz-uml}
+
+\begin{document}
+    \begin{tikzpicture}
+        \umlclass[fill=white,y=3]{DossierBancaire}{}{}
+        \umlclass[fill=white,x=6,y=3]{CompteBancaire}{}{}
+        \umlclass[fill=white]{CompteEpargne}{}{}
+
+        \umlassoc[mult1=1,mult2=1]{DossierBancaire}{CompteBancaire}
+        \umlassoc[mult1=1,mult2=1]{DossierBancaire}{CompteEpargne}
+    \end{tikzpicture}
+\end{document}

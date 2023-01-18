@@ -1,0 +1,29 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{tikz-uml}
+
+\begin{document}
+    \begin{tikzpicture}
+        \begin{umlseqdiag}
+            \umlobject{client}
+            \umlobject[class=DossierBancaire]{dossier}
+            \umlobject[class=CompteBancaire]{cb}
+            \umlobject[class=CompteEpargne]{ce}
+
+            \begin{umlcall}[op={depot(v)},dt=10]{client}{dossier}
+                \begin{umlcall}[op={ajout(0,6 * v)},dt=10]{dossier}{cb}
+                \end{umlcall}
+                \begin{umlcall}[op={ajout(0,4 * v)},dt=10]{dossier}{ce}
+                \end{umlcall}
+            \end{umlcall}
+
+            \begin{umlcall}[op={getSolde()},return={s1+s2},dt=10]{client}{dossier}
+                \begin{umlcall}[op={getSolde()},return=s1,dt=10]{dossier}{cb}
+                \end{umlcall}
+                \begin{umlcall}[op={getSolde()},return=s2,dt=10]{dossier}{ce}
+                \end{umlcall}
+            \end{umlcall}
+
+        \end{umlseqdiag}
+    \end{tikzpicture}
+\end{document}

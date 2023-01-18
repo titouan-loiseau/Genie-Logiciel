@@ -1,0 +1,39 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{tikz-uml}
+
+\begin{document}
+    \begin{tikzpicture}
+        \begin{umlpackage}[fill=white]{AppliBanque} % package-p
+            \umlclass[fill=white]{DossierBancaire}{ % classe DossierBancaire
+            }
+            {
+                + DossierBancaire() \\
+                + get\_solde() : double \\
+                + deposer(value: double) : void \\
+                + retirer(value: double) : void \\
+                + remunerer() : void
+            }
+
+            \umlclass[x=10,fill=white]{CompteBancaire}{ % classe CompteBancaire
+            \# m\_solde : double
+            }
+            {
+                + CompteBancaire() \\
+                + get\_solde() : double \\
+                + deposer(value: double) : void
+            }
+
+            \umlclass[x=10,y=-4,fill=white]{CompteEpargne}{ % classe CompteEpargne
+            - taux : double
+            }
+            {
+                + CompteEpargne(taux: double) \\
+                + remunerer() : void
+            }
+            \umlinherit{CompteEpargne}{CompteBancaire}
+            \umlunicompo[arg=m compte bancaire, mult=1, pos=0.5]{DossierBancaire}{CompteBancaire}
+            \umlunicompo[geometry=|-,arg=m compte epargne, mult=1, pos=0.5]{DossierBancaire}{CompteEpargne}
+        \end{umlpackage} 
+    \end{tikzpicture}
+\end{document}
