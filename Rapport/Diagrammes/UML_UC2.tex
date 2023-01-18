@@ -6,24 +6,25 @@
     \begin{tikzpicture}
         \begin{umlpackage}[fill=white]{AppliBanque} % package-p
             \umlclass[fill=white]{DossierBancaire}{ % classe DossierBancaire
-            - taux\_remuneration : double
             }
             {
                 + DossierBancaire() \\
-                + getSolde() : double \\
-                + depot(v: double) : void
+                + get\_solde() : double \\
+                + deposer(value: double) : void \\
+                + retirer(value: double) : void \\
+                + remunerer() : void
             }
 
-            \umlclass[x=8,fill=white]{CompteBancaire}{ % classe CompteBancaire
-            - solde : double
+            \umlclass[x=10,fill=white]{CompteBancaire}{ % classe CompteBancaire
+            \# m\_solde : double
             }
             {
                 + CompteBancaire() \\
-                + getSolde() : double \\
-                + ajout(m: double) : void
+                + get\_solde() : double \\
+                + deposer(value: double) : void
             }
 
-            \umlclass[x=8,y=-4,fill=white]{CompteEpargne}{ % classe CompteEpargne
+            \umlclass[x=10,y=-4,fill=white]{CompteEpargne}{ % classe CompteEpargne
             - taux : double
             }
             {
@@ -31,8 +32,8 @@
                 + remunerer() : void
             }
             \umlinherit{CompteEpargne}{CompteBancaire}
-            \umlunicompo[attr1=cb|1]{DossierBancaire}{CompteBancaire}
-            \umlunicompo[geometry=|-,attr1=ce|1]{DossierBancaire}{CompteEpargne}
+            \umlunicompo[arg=m compte bancaire, mult=1, pos=0.5]{DossierBancaire}{CompteBancaire}
+            \umlunicompo[geometry=|-,arg=m compte epargne, mult=1, pos=0.5]{DossierBancaire}{CompteEpargne}
         \end{umlpackage} 
     \end{tikzpicture}
 \end{document}
